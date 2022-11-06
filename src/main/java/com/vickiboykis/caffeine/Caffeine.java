@@ -18,7 +18,7 @@ public class Caffeine
 
         /*Aggregate HTML files to templates*/
         HTMLAggregator aggregator = new HTMLAggregator();
-       aggregator.aggregateHTML();
+       aggregator.aggregateHTML(files);
 
     }
 

@@ -41,7 +41,7 @@ public class HTMLGenerator {
     }
 
     /*
-    Convert all Markdown files in a given directory to HTML using
+    Convert all Markdown files in a given directory to HTML
      */
     public void convertToHTML(Set<String> fileList) throws IOException {
 

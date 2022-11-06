@@ -5,27 +5,40 @@ import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class HTMLAggregator {
 
-    public void aggregateHTML() throws IOException {
-        File outputFile = new File("index.html");
+    public void aggregateHTML(Set<String> fileList) throws IOException {
 
         MustacheFactory mf = new DefaultMustacheFactory();
         Mustache m = mf.compile("index.mustache");
 
-        Index todo = new Index("Todo 1", "Description", true);
+        File outputFile = new File("index.html");
+
+        Map context = Map.of("titles", fileList.stream().map(file -> new HTMLFields(file))
+                .collect(Collectors.toSet()));
+
         StringWriter writer = new StringWriter();
+        m.execute(writer,context).flush();
 
-
-        m.execute(writer, todo).flush();
         String html = writer.toString();
-        PrintWriter fileWriter = new PrintWriter(outputFile);
 
+        PrintWriter fileWriter = new PrintWriter(outputFile);
         fileWriter.write(html);
         fileWriter.close();
+
+
+
+        }
+
+
 
     }
 
 
-}
+
