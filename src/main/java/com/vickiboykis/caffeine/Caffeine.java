@@ -10,13 +10,12 @@ import java.util.Set;
 public class SiteBuilder
 {
 
-    private static String folder = ("/Users/vicki/caffeine/src/main/java/com/vickiboykis/caffeine/resources/content/");
+    private static String folder = ("../caffeine/src/main/resources/");
 
     public static void main( String[] args ) throws IOException {
        HTMLGenerator generator = new HTMLGenerator();
        Set<String> files = generator.listFiles(folder);
        generator.convertToHTML(files);
-       System.out.println(files);
 
     }
 
