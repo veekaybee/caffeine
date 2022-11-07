@@ -1,6 +1,7 @@
 ## Get Caffienated!
 
 
+![](java.png)
 
 Caffiene is a tiny, small static site generator written in Java. All it does is take Markdown files and renders them to HTML. The HTML templates are stitched together using Mustache-Java and rendered in index.html, which GitPages picks up. 
 
