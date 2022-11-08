@@ -29,7 +29,6 @@ public class HTMLAggregator {
             htmlElement.setTitle(matcher.group(0));
         }
 
-        System.out.println(link);
         Pattern pattern2 = Pattern.compile("(?<=date: ).(?:(?!<).)*");
         Matcher matcher2 = pattern2.matcher( link.toString());
         if (matcher2.find()){
@@ -37,10 +36,8 @@ public class HTMLAggregator {
         }
 
         File f = new File(file);
-        String fileURL = f.getName();
-        htmlElement.setUrl(fileURL);
-
-        System.out.println(htmlElement.toString());
+        String fileName = f.getName();
+        htmlElement.setUrl("caffeine/src/main/resources/" + fileName);
 
         return htmlElement;
 

@@ -52,11 +52,20 @@ public class HTMLGenerator {
                 File inputFile = new File(file);
                 File outputFile  = new File(replaceFileName(file));
 
+                String stylesheet = "<link rel=\"stylesheet\" href=\"https://unpkg.com/mvp.css@1.12/mvp.css\">";
+
                 Parser parser = Parser.builder().build();
                 Node document = parser.parseReader(new FileReader(inputFile));
                 HtmlRenderer renderer = HtmlRenderer.builder().build();
                 PrintWriter writer = new PrintWriter(outputFile);
+                writer.write(stylesheet );
+                writer.write(
+                        "<html>\n" +
+                        "<head>\n" +
+                        "</head>\n" +
+                        "<body> <section>" );
                 writer.write(renderer.render(document));
+                writer.write("</section></body></html>" );
                 writer.close();
 
             } catch (IOException e) {
