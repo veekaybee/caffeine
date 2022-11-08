@@ -6,10 +6,12 @@ import com.github.mustachejava.MustacheFactory;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HTMLAggregator {
 
@@ -20,11 +22,23 @@ public class HTMLAggregator {
         Document doc = Jsoup.parse(inputFile);
         Element link = doc.selectFirst("h2");
 
-        HTMLElement htmlElement  = new HTMLElement(null, null, null);
+        HTMLElement htmlElement  = new HTMLElement("x","y","z");
 
-        htmlElement.setTitle(link.text());
-        htmlElement.setDate(link.text());
+        Pattern pattern = Pattern.compile(link.toString());
+        Matcher matcher = pattern.matcher("title:");
+        if (matcher.find()){
+            htmlElement.setTitle(matcher.group(1));
+        }
+
+        Pattern pattern2 = Pattern.compile(link.toString());
+        Matcher matcher2 = pattern2.matcher( "date:");
+        if (matcher2.find()){
+            htmlElement.setDate(matcher.group(1));
+        }
+
+
         htmlElement.setUrl(file);
+        htmlElement.setTitle("b");
 
 
         return htmlElement;
@@ -37,7 +51,7 @@ public class HTMLAggregator {
         Mustache m = mf.compile("index.mustache");
         File outputFile = new File("index.html");
 
-        List<HTMLElement> elements = Arrays.asList();
+        List<HTMLElement> elements = new ArrayList<HTMLElement>();
 
         for (String file:fileList) {
             elements.add(this.processFile(file));
