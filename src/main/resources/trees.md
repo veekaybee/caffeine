@@ -1,7 +1,9 @@
 ---
-title: Collections
-date: 2022-11-05
+title: Binary Search Tree ADT
+date: 2022-11-07
 ----
 
-Trees are traversable structures like linkedlists
+Trees 
 
+A binary search tree maintains elements in increaing order 
+and provides efficient access to operations. 
