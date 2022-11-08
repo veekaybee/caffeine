@@ -1,5 +1,5 @@
 ---
-title: Notes on Tree Structures
+title: Collections
 date: 2022-11-05
 ----
 

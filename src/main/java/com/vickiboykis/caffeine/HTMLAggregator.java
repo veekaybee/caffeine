@@ -30,14 +30,15 @@ public class HTMLAggregator {
         }
 
         System.out.println(link);
-        Pattern pattern2 = Pattern.compile("date:(.*)");
+        Pattern pattern2 = Pattern.compile("(?<=date: ).(?:(?!<).)*");
         Matcher matcher2 = pattern2.matcher( link.toString());
         if (matcher2.find()){
             htmlElement.setDate(matcher2.group(0));
         }
 
-
-        htmlElement.setUrl(file);
+        File f = new File(file);
+        String fileURL = f.getName();
+        htmlElement.setUrl(fileURL);
 
         System.out.println(htmlElement.toString());
 
