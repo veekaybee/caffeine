@@ -8,7 +8,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,24 +21,25 @@ public class HTMLAggregator {
         Document doc = Jsoup.parse(inputFile);
         Element link = doc.selectFirst("h2");
 
-        HTMLElement htmlElement  = new HTMLElement("x","y","z");
+        HTMLElement htmlElement  = new HTMLElement(" "," "," ");
 
-        Pattern pattern = Pattern.compile(link.toString());
-        Matcher matcher = pattern.matcher("title:");
+        Pattern pattern = Pattern.compile("[^<h2>title: ].+?(?=date)");
+        Matcher matcher = pattern.matcher(link.toString());
         if (matcher.find()){
-            htmlElement.setTitle(matcher.group(1));
+            htmlElement.setTitle(matcher.group(0));
         }
 
-        Pattern pattern2 = Pattern.compile(link.toString());
-        Matcher matcher2 = pattern2.matcher( "date:");
+        System.out.println(link);
+        Pattern pattern2 = Pattern.compile("date:(.*)");
+        Matcher matcher2 = pattern2.matcher( link.toString());
         if (matcher2.find()){
-            htmlElement.setDate(matcher.group(1));
+            htmlElement.setDate(matcher2.group(0));
         }
 
 
         htmlElement.setUrl(file);
-        htmlElement.setTitle("b");
 
+        System.out.println(htmlElement.toString());
 
         return htmlElement;
 
