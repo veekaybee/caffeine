@@ -37,7 +37,7 @@ public class HTMLAggregator {
 
         File f = new File(file);
         String fileName = f.getName();
-        htmlElement.setUrl("caffeine/src/main/resources/" + fileName);
+        htmlElement.setUrl("src/main/resources/" + fileName);
 
         return htmlElement;
 
