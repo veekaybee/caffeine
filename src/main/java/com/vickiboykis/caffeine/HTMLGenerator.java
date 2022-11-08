@@ -16,16 +16,16 @@ public class HTMLGenerator {
     List all the files in a given directory for processing
     and only process markdown files
      */
-    public Set<String> listFiles(String dir) {
+    public Set<String> listFiles(String dir, String fileType) {
 
         Set<String> results = Stream.of(new File(dir).listFiles())
                 .filter(file -> !file.isDirectory())
-                .filter(file -> file.toString().contains(".md"))
+                .filter(file -> file.toString().contains(fileType))
                 .map(File::getAbsolutePath)
                 .collect(Collectors.toSet());
 
         if (results.isEmpty()){
-            throw new RuntimeException("No Markdown files found in dir");
+            throw new RuntimeException("No" + fileType + "files found in dir");
         }
 
         return results;
@@ -40,6 +40,7 @@ public class HTMLGenerator {
         return mdFilename;
     }
 
+
     /*
     Convert all Markdown files in a given directory to HTML
      */
@@ -48,7 +49,6 @@ public class HTMLGenerator {
         for (String file:fileList) {
 
             try {
-
                 File inputFile = new File(file);
                 File outputFile  = new File(replaceFileName(file));
 

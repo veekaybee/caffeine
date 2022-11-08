@@ -43,7 +43,7 @@ public class SiteGeneratorTest
 
         String folder = System.getProperty("java.io.tmpdir");
         HTMLGenerator  html = new HTMLGenerator();
-        html.listFiles(folder);
+        html.listFiles(folder,".md");
 
     }
 }

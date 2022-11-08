@@ -13,12 +13,13 @@ public class Caffeine
 
        /*Generate Markdown from HTML files*/
        HTMLGenerator generator = new HTMLGenerator();
-       Set<String> files = generator.listFiles(folder);
-       generator.convertToHTML(files);
+       Set<String> mdFiles = generator.listFiles(folder,".md");
+       generator.convertToHTML(mdFiles);
 
         /*Aggregate HTML files to templates*/
         HTMLAggregator aggregator = new HTMLAggregator();
-       aggregator.aggregateHTML(files);
+        Set<String> htmlFiles = generator.listFiles(folder,".html");
+        aggregator.aggregateHTML(htmlFiles);
 
     }
 
