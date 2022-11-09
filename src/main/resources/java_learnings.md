@@ -1,6 +1,6 @@
 ---
 title: Things I learned about Java so far
-date: 2022-11-06
+date: 2022-11-08
 ----
 
 Things I learned about Java so far: everything except for primitives is
