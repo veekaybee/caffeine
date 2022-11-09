@@ -1,6 +1,6 @@
 ---
 title:  Time Complexity
-date: 2922-09-01
+date: 2022-09-01
 ----
 
 Each algorithm carries a cost in terms of performance over a given set of data
