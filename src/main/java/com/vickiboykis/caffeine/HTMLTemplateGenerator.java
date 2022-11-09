@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HTMLAggregator {
+public class HTMLTemplateGenerator {
 
     public HTMLElement processFile(String file) throws IOException {
 
@@ -23,12 +23,14 @@ public class HTMLAggregator {
 
         HTMLElement htmlElement  = new HTMLElement(" "," "," ");
 
+        /*Generate title element from HTML */
         Pattern pattern = Pattern.compile("[^<h2>title: ].+?(?=date)");
         Matcher matcher = pattern.matcher(link.toString());
         if (matcher.find()){
             htmlElement.setTitle(matcher.group(0));
         }
 
+        /*Generate date element from HTML*/
         Pattern pattern2 = Pattern.compile("(?<=date: ).(?:(?!<).)*");
         Matcher matcher2 = pattern2.matcher( link.toString());
         if (matcher2.find()){
@@ -43,7 +45,7 @@ public class HTMLAggregator {
 
     }
 
-    public void aggregateHTML(Set<String> fileList) throws IOException {
+    public void generateHTMLFiles(Set<String> fileList) throws IOException {
 
         MustacheFactory mf = new DefaultMustacheFactory();
         Mustache m = mf.compile("index.mustache");

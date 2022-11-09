@@ -1,5 +1,5 @@
 ---
-title: The Map ADT
+title:  Map ADT
 date: 2022-11-09
 ----
 

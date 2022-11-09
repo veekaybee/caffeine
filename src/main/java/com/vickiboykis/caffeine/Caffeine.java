@@ -17,9 +17,9 @@ public class Caffeine
        generator.convertToHTML(mdFiles);
 
         /*Aggregate HTML files to templates*/
-        HTMLAggregator aggregator = new HTMLAggregator();
+        HTMLTemplateGenerator aggregator = new HTMLTemplateGenerator();
         Set<String> htmlFiles = generator.listFiles(folder,".html");
-        aggregator.aggregateHTML(htmlFiles);
+        aggregator.generateHTMLFiles(htmlFiles);
 
     }
 
