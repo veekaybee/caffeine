@@ -18,4 +18,6 @@ Several ways to implement maps:
 
 ## Hashing Algorithms
 
+Adding some notes about hashes
+
 ## Collisions
