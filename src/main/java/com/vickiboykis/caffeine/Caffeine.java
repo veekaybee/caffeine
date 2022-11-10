@@ -12,14 +12,27 @@ public class Caffeine
 
     public static void main( String[] args ) throws IOException {
 
-       /*Generate Markdown from HTML files*/
-       HTMLGenerator generator = new HTMLGenerator();
+        /* Delete all existing HTML files for a clean start */
+        HTMLGenerator generator = new HTMLGenerator();
+        Set<String> htmlFiles = generator.listFiles(folder,".html");
+
+
+        for (String fileString : htmlFiles) {
+            File file = new File(fileString);
+            String pes = file.getName();
+            if (pes.endsWith("." + ".html")) {
+                file.delete();
+            }
+        }
+
+       /*Generate HTML from Markdown files*/
+
        Set<String> mdFiles = generator.listFiles(folder,".md");
        generator.convertToHTML(mdFiles);
 
         /*Aggregate HTML files to templates*/
         HTMLTemplateGenerator aggregator = new HTMLTemplateGenerator();
-        Set<String> htmlFiles = generator.listFiles(folder,".html");
+
         aggregator.generateHTMLFiles(htmlFiles);
 
     }
