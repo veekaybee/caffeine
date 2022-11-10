@@ -53,7 +53,11 @@ public class HTMLTemplateGenerator {
 
         List<HTMLElement> elements = new ArrayList<HTMLElement>();
 
-        for (String file:fileList) {
+
+        Set<String> sortedFileList = new TreeSet<String>(fileList);
+
+
+        for (String file:sortedFileList) {
             elements.add(this.processFile(file));
         }
 
