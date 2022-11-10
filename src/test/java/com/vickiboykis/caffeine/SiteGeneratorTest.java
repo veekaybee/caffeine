@@ -7,6 +7,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.w3c.dom.html.HTMLOptGroupElement;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,8 +27,8 @@ public class SiteGeneratorTest
     @Before
     public void setUp() {
         try {
-            file1 = folder.newFile( "testfile1.txt" );
-            file2 = folder.newFile( "testfile2.txt" );
+            file1 = folder.newFile( "testfile1.md" );
+            file2 = folder.newFile( "testfile2.md" );
         }
         catch( IOException ioe ) {
             System.err.println(
@@ -37,13 +38,14 @@ public class SiteGeneratorTest
     }
 
 
-    @Test(expected = RuntimeException.class)
+    @Test()
     public void testEmptyMarkdownDir()
     {
-
         String folder = System.getProperty("java.io.tmpdir");
         HTMLGenerator  html = new HTMLGenerator();
-        html.listFiles(folder,".md");
+        assertEquals(html.listFiles(folder,".md").size(), 0);
 
     }
+
+
 }
