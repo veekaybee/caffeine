@@ -16,7 +16,6 @@ public class Caffeine
         HTMLGenerator generator = new HTMLGenerator();
         Set<String> htmlFiles = generator.listFiles(folder,".html");
 
-
         for (String fileString : htmlFiles) {
             File file = new File(fileString);
             String pes = file.getName();
@@ -30,10 +29,10 @@ public class Caffeine
        Set<String> mdFiles = generator.listFiles(folder,".md");
        generator.convertToHTML(mdFiles);
 
-        /*Aggregate HTML files to templates*/
+        /*Aggregate updated HTML files to templates*/
         HTMLTemplateGenerator aggregator = new HTMLTemplateGenerator();
-
-        aggregator.generateHTMLFiles(htmlFiles);
+        Set<String> updatedHTMLFiles = generator.listFiles(folder,".html");
+        aggregator.generateHTMLFiles(updatedHTMLFiles);
 
     }
 

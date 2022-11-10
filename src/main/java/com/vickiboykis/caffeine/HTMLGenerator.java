@@ -2,6 +2,7 @@ package com.vickiboykis.caffeine;
 
 import java.io.*;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -11,24 +12,29 @@ import org.commonmark.renderer.html.HtmlRenderer;
 
 public class HTMLGenerator {
 
-
+    private static final Logger logger = Logger.getLogger(HTMLGenerator.class.getName());
     /*
     List all the files in a given directory for processing
     and only process markdown files
      */
     public Set<String> listFiles(String dir, String fileType) {
 
+        Set<String> result = null;
+
+        try {
         Set<String> results = Stream.of(new File(dir).listFiles())
                 .filter(file -> !file.isDirectory())
                 .filter(file -> file.toString().contains(fileType))
                 .map(File::getAbsolutePath)
                 .collect(Collectors.toSet());
 
-        if (results.isEmpty()){
-            throw new RuntimeException("No" + fileType + "files found in dir");
-        }
+            result = results;
+            }
+            catch (Exception e) {
+                logger.warning("No" + fileType + " files found in dir");
+            }
 
-        return results;
+        return result;
     }
 
     /*
