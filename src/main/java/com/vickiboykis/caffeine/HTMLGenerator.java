@@ -64,14 +64,16 @@ public class HTMLGenerator {
                 Node document = parser.parseReader(new FileReader(inputFile));
                 HtmlRenderer renderer = HtmlRenderer.builder().build();
                 PrintWriter writer = new PrintWriter(outputFile);
-                writer.write(stylesheet );
-                writer.write(
+                writer.write("<!DOCTYPE html>\n" +
+                        "\n" +
+                        "<meta charset=\"UTF-8\">\n" +
                         "<html>\n" +
                         "<head>\n" +
+                         stylesheet +
                         "</head>\n" +
-                        "<body> <section>" );
+                        "<body><main> " );
                 writer.write(renderer.render(document));
-                writer.write("</section></body></html>" );
+                writer.write("</main></body></html>" );
                 writer.close();
 
             } catch (IOException e) {

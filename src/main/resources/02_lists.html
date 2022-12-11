@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"><html>
+<html>
 <head>
-</head>
-<body> <section><hr />
+<link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"></head>
+<body><main> <hr />
 <h2>title: List ADT
 date: 2022-10-01</h2>
 <p>Lists are collections of elements with linear relationships
@@ -19,6 +19,7 @@ successsor.</p>
 <li>An iterator provides <code>hasNext</code>, <code>next</code> and <code>remove</code></li>
 </ul>
 </li>
+<li>Each method that accepts an index as an argument throws an exception (IndexOutOfBoundsException) if the index is invalid</li>
 </ul>
 <p>List Interface:</p>
 <pre><code class="language-java">public interface ListInterface&lt;T&gt; extends CollectionInterface&lt;T&gt;, Iterable&lt;T&gt;
@@ -66,4 +67,4 @@ successsor.</p>
 <li>get and set are optional</li>
 </ul>
 <h2>Array-based implementations:</h2>
-</section></body></html>
+</main></body></html>

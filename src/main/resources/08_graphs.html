@@ -1,7 +1,10 @@
-<link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"><html>
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<html>
 <head>
-</head>
-<body> <section><hr />
+<link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"></head>
+<body><main> <hr />
 <h2>title: Graphs
 date: 2022-11-22</h2>
 <p>Graphs are trees where there is no restriction that each node only has to have one parent node. Graphs have vertices, which are the
@@ -141,4 +144,4 @@ ranks.show()
         .run()
 </code></pre>
 <p>which creates a new column, user_count, and aggregates a list of values based on the initial size of the user_count column, which is initialized to zero for all values, and accumulates based on how many users are added to the list. This doesn't include the actual names of the connections, which is a requirement for part 2, and does not join users and users_count in any way, yet - if we did want to join them, I'd have to resolve how to include two different datatypes, possibly as a set or dictionary, to pass into <code>aggMsgs</code>, and how to send those two elements sepratately to Dst and Src.</p>
-</section></body></html>
+</main></body></html>

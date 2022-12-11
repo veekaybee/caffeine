@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<meta charset="UTF-8">
+<html>
+<head>
+<link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"></head>
+<body><main> <hr />
+<h2>title:  Queues
+date: 2022-09-15</h2>
+<p>Queue - A structure in which elements are added to the rear and removed from the front; a “first in, first out” (FIFO) structure</p>
+<p>Queue operations:</p>
+<pre><code>Constructor
+new - creates an empty queue
+Transformers
+enqueue - adds an element to the rear of a queue
+dequeue - removes and returns the front element of the queue 
+</code></pre>
+<pre><code class="language-java">public interface QueueInterface&lt;T&gt;
+{
+  void enqueue(T element) throws QueueOverflowException;
+  // Throws QueueOverflowException if this queue is full;
+  // otherwise, adds element to the rear of this queue.
+
+  T dequeue() throws QueueUnderflowException;
+  // Throws QueueUnderflowException if this queue is empty;
+  // otherwise, removes front element from this queue and returns it.
+
+  boolean isFull();
+  // Returns true if this queue is full; otherwise, returns false.
+
+  boolean isEmpty();
+  // Returns true if this queue is empty; otherwise, returns false.
+  
+  int size();
+  // Returns the number of elements in this queue.
+}
+</code></pre>
+</main></body></html>

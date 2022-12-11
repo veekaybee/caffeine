@@ -12,7 +12,8 @@ successsor.
 + Can iterate linearly through a list from the first to the last element
     - Java interfaces of iteration: `Iterable` in `java.lang`
     - An iterator provides `hasNext`, `next` and `remove`
-    
++ Each method that accepts an index as an argument throws an exception (IndexOutOfBoundsException) if the index is invalid
+
 
 List Interface: 
 
