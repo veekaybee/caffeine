@@ -10,8 +10,15 @@ date: 2022-11-01</h2>
 <p>Trees are a variation on collections (which have add, remove, get, and contains operations)
 that maintains elements in increasing order and provides
 efficient implementations of all the core operations.</p>
+<p>tree is a nonlinear structure in which each node is capable of having many successor nodes, called children.</p>
+<ul>
+<li>Binary tree: A tree in which each node is capable of having two child nodes, a left child node and a right child node</li>
+</ul>
 <p>A binary search tree maintains elements in increasing order
 and provides efficient access to operations.</p>
+<p>A binary tree in which the key value in any node is greater than or equal to the key value in its left child and any of its descendants (the nodes in the left subtree)
+is less than the key value in its right child and any of its descendants (the nodes in the right subtree)</p>
+<p>Binary Search Tree, in general allows O(log2N) find location , O(1) insertion</p>
 <p>Example:</p>
 <pre><code>         2               
         / \       
@@ -25,4 +32,21 @@ and provides efficient access to operations.</p>
   / \ / \ / \ / \ 
   5 8 4 5 8 4 5 8 
 </code></pre>
+<p>``java
+import ch05.collections.CollectionInterface;
+import java.util.Iterator;</p>
+<p>public interface BSTInterface<T> extends CollectionInterface<T>, Iterable<T>
+{
+// Used to specify traversal order.
+public enum Traversal {Inorder, Preorder, Postorder};</p>
+<p>T min();
+// If this BST is empty, returns null;
+// otherwise returns the smallest element of the tree.</p>
+<p>T max();
+// If this BST is empty, returns null;
+// otherwise returns the largest element of the tree.</p>
+<p>public Iterator<T> getIterator(Traversal orderType);
+// Creates and returns an Iterator providing a traversal of a &quot;snapshot&quot;
+// of the current tree in the order indicated by the argument.
+}``</p>
 </main></body></html>
